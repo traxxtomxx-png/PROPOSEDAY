@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Chose You | A Romantic Confession</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="stars-container"></div>
+
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mp3"> 
+    </audio>
+
+    <video id="preload-video" preload="auto" hidden>
+        <source src="success.mp4" type="video/mp4">
+    </video>
+
+    <div id="look-at-me" class="hidden">Now look at me... 👀</div>
+
+    <button id="restart-btn" class="hidden">See Again ↻</button>
+
+    <section id="start-screen" class="screen active">
+        <div class="content">
+            <h1 class="title">Special Message</h1>
+            <p class="subtitle">A Virtual Confession</p>
+            <button id="start-btn" class="glow-btn">Click to begin</button>
+        </div>
+    </section>
+
+    <section id="slides-screen" class="screen hidden">
+        <div class="slide-container">
+            <div class="slide active-slide">
+                <p>Everything started with that “Heyy” message 💞<br>That moment changed everything in my life 🫠<br>From then on, everything slowly changed for the better 💖</p>
+            </div>
+            <div class="slide">
+                <p>Every moment with you feels like magic 💗<br>I feel an inner peace when I am with you....<br>It feels like we have known each other for a long time,<br>like our souls found familiarity in each other 💞</p>
+            </div>
+            <div class="slide">
+                <p>I don't just want you for a chapter.<br>I want you for the whole story of my life.<br>Hum Dono ki Prem Kahani 💖💘</p>
+            </div>
+            <div class="slide">
+                <p>So, I have a question to ask...</p>
+            </div>
+        </div>
+        <div class="instruction">Tap anywhere to continue</div>
+    </section>
+
+    <section id="proposal-screen" class="screen hidden">
+        <div class="proposal-content">
+            
+            <div class="media-container">
+                <video id="proposal-video" autoplay loop muted playsinline>
+                    <source src="propose.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div id="question-container">
+                <p class="pre-message">I have fallen for you...</p>
+                <h2 class="question">Will you be mine forever?</h2>
+                <div class="buttons">
+                    <button class="choice-btn" data-answer="yes">Yes 💖</button>
+                    <button class="choice-btn" data-answer="always">Always 💍</button>
+                </div>
+            </div>
+
+            <div id="final-msg-container" class="hidden">
+                <h1 class="final-text">I Love You my Roshogolla 💝</h1>
+            </div>
+            
+        </div>
+        
+        <div class="hearts-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

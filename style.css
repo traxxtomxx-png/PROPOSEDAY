@@ -1,0 +1,146 @@
+/* -------------------------------------------------
+   GLOBAL RESETS
+------------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #050510;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+#stars-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; pointer-events: none;
+}
+.star {
+    position: absolute; background: white; border-radius: 50%;
+    opacity: 0.8; animation: twinkle infinite ease-in-out alternate;
+}
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* -------------------------------------------------
+   POPUP & BUTTONS
+------------------------------------------------- */
+#look-at-me {
+    position: fixed; bottom: 30px; left: 30px; padding: 15px 25px;
+    background: #e64980; color: white; font-size: 1.2rem; font-weight: bold;
+    border-radius: 50px; box-shadow: 0 0 20px rgba(230, 73, 128, 0.8);
+    z-index: 1000; opacity: 0; transform: translateY(50px);
+    transition: all 0.5s ease; animation: attentionPulse 2s infinite;
+}
+#look-at-me.show { opacity: 1; transform: translateY(0); }
+
+@keyframes attentionPulse {
+    0% { transform: scale(1); box-shadow: 0 0 20px rgba(230, 73, 128, 0.8); }
+    50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(230, 73, 128, 1); }
+    100% { transform: scale(1); box-shadow: 0 0 20px rgba(230, 73, 128, 0.8); }
+}
+
+#restart-btn {
+    position: fixed; bottom: 20px; right: 20px; padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.8);
+    color: white; font-family: 'Montserrat', sans-serif; font-size: 0.9rem;
+    border-radius: 8px; cursor: pointer; box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    z-index: 100; opacity: 0; pointer-events: none; transition: all 0.5s ease;
+}
+#restart-btn.show { opacity: 1; pointer-events: all; }
+
+/* -------------------------------------------------
+   SCREENS & SLIDES
+------------------------------------------------- */
+.screen {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: opacity 1.5s ease;
+}
+.screen.active { opacity: 1; pointer-events: all; z-index: 10; }
+.screen.hidden { display: none; opacity: 0; }
+
+.title { font-family: 'Great Vibes', cursive; font-size: 4rem; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); margin-bottom: 10px; text-align: center; }
+.subtitle { font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 40px; opacity: 0.8; text-align: center; }
+.glow-btn {
+    padding: 15px 40px; background: transparent; border: 2px solid white; color: white;
+    font-size: 1.2rem; cursor: pointer; border-radius: 30px; transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255,255,255,0.2); font-family: 'Montserrat', sans-serif;
+}
+.glow-btn:hover { background: white; color: #050510; box-shadow: 0 0 25px rgba(255,255,255,0.8); transform: scale(1.05); }
+
+.slide-container { width: 80%; text-align: center; min-height: 200px; display: flex; justify-content: center; align-items: center; }
+.slide { display: none; font-family: 'Great Vibes', cursive; font-size: 2.2rem; line-height: 1.5; text-shadow: 0 0 10px rgba(255, 192, 203, 0.5); animation: fadeText 1.5s ease; }
+.slide.active-slide { display: block; }
+@keyframes fadeText { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.instruction { position: absolute; bottom: 50px; font-size: 0.9rem; opacity: 0.5; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.7; } }
+
+/* -------------------------------------------------
+   PROPOSAL CONTENT (FIXED: BORDER ON VIDEO)
+------------------------------------------------- */
+.proposal-content { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; padding: 20px; overflow-y: auto; }
+
+/* The container just centers, NO BORDER here */
+.media-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* The video gets the border and size constraints */
+#proposal-video {
+    display: block;
+    
+    /* Auto width/height forces the element to match the video file dimensions */
+    width: auto;
+    height: auto;
+    
+    /* Maximum limits so it fits on screen */
+    max-width: 90vw;
+    max-height: 60vh;
+    
+    /* THE GLOWING FRAME IS APPLIED HERE */
+    border: 2px solid white;
+    border-radius: 15px; 
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.5); /* Pink Glow */
+    
+    /* Animation for smooth resizing */
+    transition: all 0.5s ease;
+}
+
+#question-container { text-align: center; transition: opacity 1s ease; }
+
+.pre-message { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: #ffcccc; margin-bottom: 5px; text-shadow: 0 0 10px #ff6b6b; animation: fadeText 2s ease; }
+.question { font-family: 'Great Vibes', cursive; font-size: 3.5rem; margin-bottom: 25px; text-shadow: 0 0 15px #ff6b6b; }
+
+.buttons { display: flex; gap: 20px; justify-content: center; }
+.choice-btn {
+    padding: 12px 30px; border: none; border-radius: 50px; background: white; color: #a61e4d;
+    font-weight: bold; cursor: pointer; font-size: 1.2rem; transition: transform 0.2s, box-shadow 0.2s;
+    font-family: 'Montserrat', sans-serif;
+}
+.choice-btn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.6); }
+
+#final-msg-container { text-align: center; margin-top: 10px; animation: floatUp 1.5s ease forwards; }
+.final-text { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: #ff8787; text-shadow: 0 0 20px #ff8787; }
+@keyframes floatUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+.fade-out { opacity: 0 !important; pointer-events: none; }
+.hidden { display: none !important; }
+.heart-particle { position: absolute; color: #e64980; font-size: 25px; animation: floatHeart 4s linear infinite; top: 100%; }
+@keyframes floatHeart { 0% { transform: translateY(0) scale(0.5); opacity: 1; } 100% { transform: translateY(-110vh) scale(1.2); opacity: 0; } }
+
+@media (max-width: 600px) {
+    .title { font-size: 3rem; } .slide { font-size: 1.8rem; }
+    .pre-message { font-size: 1.8rem; } .question { font-size: 2.2rem; }
+    .final-text { font-size: 2.5rem; } 
+    #proposal-video { max-height: 50vh; }
+    #look-at-me { bottom: 80px; left: 50%; transform: translateX(-50%); width: max-content; }
+    #look-at-me.show { transform: translateX(-50%) translateY(0); }
+}
